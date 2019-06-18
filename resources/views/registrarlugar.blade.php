@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <div class="card-body">
     <form method="post" action="{{ action('lugar\registrarLugaresController@store') }}">
         @csrf
@@ -7,6 +11,58 @@
 
             <div class="col-md-6">
                 <input id="name1" type="text" class="form-control @error('name') is-invalid @enderror" name="name1" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('capacidad') }}</label>
+
+            <div class="col-md-6">
+                <input id="capacidad" type="text" class="form-control @error('capacidad') is-invalid @enderror" name="capacidad" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('direccion') }}</label>
+
+            <div class="col-md-6">
+                <input id="direccion" type="text" class="form-control @error('name') is-invalid @enderror" name="direccion" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('barrio') }}</label>
+
+            <div class="col-md-6">
+                <input id="barrio" type="text" class="form-control @error('name') is-invalid @enderror" name="barrio" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('sectores') }}</label>
+
+            <div class="col-md-6">
+                <input id="sectores" type="number" class="form-control @error('name') is-invalid @enderror" name="sectores" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                 @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -32,4 +88,32 @@
         </div>
     </form>
 
+
+    @if(isset($lugares))
+        <div class="jumbotron text-center">
+        <label>nombre: </label>
+        @foreach($lugares as $lugar)
+            <table class="egt">
+
+
+                <tr>
+
+                    <td> {{$lugar->name}}</td>
+                    <td> {{$lugar->capacidad}}</td>
+                    <td> {{$lugar->direccion}}</td>
+                    <td> {{$lugar->barrio}}</td>
+                    <td> {{$lugar->sectores}}</td>
+
+                </tr>
+
+
+
+
+            </table>
+            {{--<label>{{ $lugar->name }}</label>--}}
+        @endforeach
+    @endif
+        </div>
+
 </div>
+@endsection

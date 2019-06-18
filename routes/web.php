@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/registrarlugar', 'lugar\registrarLugaresController@index');
+Route::get('/registrarlugar', 'lugar\registrarLugaresController@index')->name('registrarlugar');
 Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
 
 

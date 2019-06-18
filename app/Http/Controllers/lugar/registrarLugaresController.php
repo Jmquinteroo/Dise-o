@@ -15,7 +15,8 @@ class registrarLugaresController extends Controller
      */
     public function index()
     {
-        return view('registrarlugar');
+        $lugares=Lugar::all();
+        return view('registrarlugar',compact('lugares'));
         //
     }
 
@@ -40,8 +41,13 @@ class registrarLugaresController extends Controller
         $input = (object)$request;
         $lugar = new Lugar();
         $lugar->name = $input->name1;
-        $lugar->save();
+        $lugar->capacidad = $input->capacidad;
+        $lugar->direccion = $input->direccion;
+        $lugar->barrio = $input->barrio;
+        $lugar->sectores = $input->sectores;
 
+        $lugar->save();
+        return redirect(route('registrarlugar'));
 
         //
     }
