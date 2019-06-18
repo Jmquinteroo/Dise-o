@@ -90,10 +90,23 @@
 
 
     @if(isset($lugares))
+        <br>
+
+        <div class="col-lg-7 offset-3">
         <div class="jumbotron text-center">
-        <label>nombre: </label>
-        @foreach($lugares as $lugar)
-            <table class="egt">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Capacidad</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Barrio</th>
+                    <th scope="col">Sectores</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach($lugares as $lugar)
 
 
                 <tr>
@@ -109,10 +122,14 @@
 
 
 
-            </table>
+
             {{--<label>{{ $lugar->name }}</label>--}}
         @endforeach
+                </tbody>
+
+            </table>
     @endif
+        </div>
         </div>
 
 </div>
