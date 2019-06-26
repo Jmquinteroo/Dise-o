@@ -92,8 +92,9 @@
     @if(isset($lugares))
         <br>
 
-        <div class="col-lg-7 offset-3">
+        <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
         <div class="jumbotron text-center">
+            <div class="table-responsive">
             <table class="table">
                 <thead>
                 <tr>
@@ -128,6 +129,7 @@
                 </tbody>
 
             </table>
+            </div>
     @endif
         </div>
         </div>
