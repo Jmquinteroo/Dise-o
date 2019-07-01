@@ -48,7 +48,8 @@ class Admin_Eventos extends Controller
             'precios'=>'required|integer',
         ]);
 
-        Evento::create($request->all());
+        $evento = new Evento($request->all());
+        $evento->save();
 
         return redirect()->route('eventos.index')
             ->with('Exito','Evento creado exitosamente');
@@ -73,7 +74,8 @@ class Admin_Eventos extends Controller
      */
     public function edit(Evento $evento)
     {
-        //
+        $lugares=Lugar::all();
+        return view('eventos.edit',compact('evento'),compact('lugares'));
     }
 
     /**
@@ -85,7 +87,18 @@ class Admin_Eventos extends Controller
      */
     public function update(Request $request, Evento $evento)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|string',
+            'lugar_id'=>'required|integer',
+            'fecha'=>'required|date|after:today',
+            'hora'=>'required|date_format:H:i',
+            'precios'=>'required|integer',
+        ]);
+
+        $evento->update($request->all());
+
+        return redirect()->route('eventos.index')
+            ->with('Exito','Evento modificado correctamente');
     }
 
     /**
@@ -96,6 +109,9 @@ class Admin_Eventos extends Controller
      */
     public function destroy(Evento $evento)
     {
-        //
+        $evento->delete();
+
+        return redirect()->route('eventos.index')
+            ->with('Exito','Evento eliminado correctamente');
     }
 }
