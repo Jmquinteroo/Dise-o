@@ -5,6 +5,7 @@ namespace App\Http\Controllers\lugar;
 use App\Models\Lugar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
 
 class registrarLugaresController extends Controller
 {
@@ -25,19 +26,9 @@ class registrarLugaresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
         $input = (object)$request;
         $lugar = new Lugar();
         $lugar->name = $input->name1;
@@ -49,7 +40,25 @@ class registrarLugaresController extends Controller
         $lugar->save();
         return redirect(route('registrarlugar'));
 
-        //
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store($id)
+    {
+        $lugares=Lugar::all();
+        $idd=$id;
+        return view('layouts.editarlugar',compact('lugares'),compact('idd'));
+
+
+
+        return redirect(action('editarlugar'));
+
     }
 
     /**
@@ -69,10 +78,21 @@ class registrarLugaresController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+
+
+        $lugar=Lugar::find($request->id);
+        $lugar->name = $request->name1;
+        $lugar->capacidad = $request->capacidad;
+        $lugar->direccion = $request->direccion;
+        $lugar->barrio = $request->barrio;
+        $lugar->sectores = $request->sectores;
+        $lugar->save();
+
+        return redirect(route('registrarlugar'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -94,6 +114,8 @@ class registrarLugaresController extends Controller
      */
     public function destroy($id)
     {
-        //
+Lugar::destroy($id);
+
+        return redirect(route('registrarlugar'));
     }
 }

@@ -21,7 +21,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/registrarlugar', 'lugar\registrarLugaresController@index')->name('registrarlugar');
-Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
+//Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
+
+Route::post('/registrarlugar', 'lugar\registrarLugaresController@create');
+Route::post('editarlugar','lugar\registrarLugaresController@edit');
+//Route::get('editarlugar','lugar\registrarLugaresController@store')->name('editarlugar');
+Route::post('editarlugar','lugar\registrarLugaresController@edit');
+Route::get('editarlugar/{id}   ','lugar\registrarLugaresController@store')->name('editarlugar');
+//Route::post('borrarlugar','lugar\registrarLugaresController@destroy');
+Route::get('borrarlugar/{id}   ','lugar\registrarLugaresController@destroy')->name('editarlugar');
 
 
 #Route::get('/', 'HomeController@index')->name('home');
