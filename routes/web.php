@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/registrarlugar', 'lugar\registrarLugaresController@index')->name('registrarlugar');
 Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
+Route::resource('eventos','evento\Admin_Eventos');
 
 
 #Route::get('/', 'HomeController@index')->name('home');
