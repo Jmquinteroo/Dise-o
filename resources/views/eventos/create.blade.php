@@ -39,7 +39,7 @@
                     <select name="lugar_id" required>
                         <option value="" disabled selected>Seleccionar lugar</option>
                         @foreach ($lugares->all() as $lugar)
-                            <option value="<?php echo $lugar['id'];?>">{{$lugar['name']}}</option>
+                            <option value="<?php echo $lugar['id'];?>">{{$lugar['nombre']}}</option>
                         @endforeach
                     </select>
 

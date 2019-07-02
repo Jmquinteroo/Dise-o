@@ -9,7 +9,7 @@ class Lugar extends Model
     //
     protected $table = 'lugares';
     protected $fillable = [
-        'name',
+        'nombre',
         'capacidad',
         'direccion',
         'barrio',

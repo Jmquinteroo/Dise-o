@@ -72,7 +72,7 @@
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('eventos.index') }}">Eventos</a>
-                        <a href="{{ route('registrarlugar') }}">Registrar lugar</a>
+                        <a href="{{ route('lugares.index') }}">Lugares</a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
                         @endif
