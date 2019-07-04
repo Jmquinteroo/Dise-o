@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use \Spatie\Permission\Traits\HasRoles;
 
 class RegisterController extends Controller
 {
+    use HasRoles;
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -37,7 +41,19 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        if (Auth::check()) {
+            $this->middleware('auth');
+            echo '<<div class="card-body">
+                    hola
+            </div>>';
+
+        }
+        else{
+            $this->middleware('guest');
+
+        }
+
+
     }
 
     /**
@@ -52,6 +68,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'apellido' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'fecha_nacimiento' => ['required', 'date', 'before:today'],
+            'telefono' => ['required', 'string', 'max:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -66,11 +84,34 @@ class RegisterController extends Controller
     {
 
 
-        return User::create([
-            'name' => $data['name'],
-            'apellido' => $data['apellido'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+        $User = User::create([
+                'name' => $data['name'],
+                'apellido' => $data['apellido'],
+                'email' => $data['email'],
+                'fecha_nacimiento' => $data['fecha_nacimiento'],
+                'telefono' => $data['telefono'],
+                'password' => Hash::make($data['password']),
+            ]
+        );
+
+        if ($User -> Hasrole('admin')) {
+            $User->assignRole('admin');
+            return $User;
+
+
+        }else  {
+        $User->assignRole('cliente');
+        return $User;
     }
+
+
+
+    }
+
+
+
+
+
+
 }

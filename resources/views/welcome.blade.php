@@ -65,21 +65,26 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <div class="top-right links">
+                @if (auth()->check())
+                    @if (auth()->user()->isAdministrator())
                         <a href="{{ route('eventos.index') }}">Eventos</a>
                         <a href="{{ route('lugares.index') }}">Lugares</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ url('/home') }}">Home</a>
 
+                    @else
+
+                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                 @else
+
+                    <a href="{{ route('register') }}">Register</a>
+                    <a href="{{ route('login') }}">Login</a>
+
+                @endif
+            </div>
             <div class="content">
                 <div class="title m-b-md">
                     Laravel

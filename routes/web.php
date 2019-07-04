@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/registrarlugar', 'lugar\registrarLugaresController@index')->name('registrarlugar');
 ////Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
 //
@@ -33,6 +33,10 @@ Auth::routes();
 //Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
 Route::resource('eventos','evento\Admin_Eventos');
 Route::resource('lugares','lugar\Admin_Lugares');
+Route::view('/welcome','welcome');
+Route::resource('adminregistro','Registro_admin\Admin_registro');
+
+
 
 
 #Route::get('/', 'HomeController@index')->name('home');
