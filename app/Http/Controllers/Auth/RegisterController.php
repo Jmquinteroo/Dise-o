@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -32,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
 
     /**
@@ -73,18 +75,45 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]
         );
-
-        if (Auth::user() -> Hasrole('admin')) {
-            $User->assignRole('admin');
+        if (Auth::check()){
+            if (Auth::user() -> Hasrole('admin')) {
+                $User->assignRole('admin');
+                return $User;
+            }
+            else  {
+                $User->assignRole('cliente');
+                return $User;
+            }
+        }
+        else{
+            $User->assignRole('cliente');
             return $User;
 
-
-        }else  {
-        $User->assignRole('cliente');
-        return $User;
+        }
     }
+    public function register(Request $request)
+    {
+        if (Auth::check()){
+            $this->validator($request->all())->validate();
+
+            event(new Registered($user = $this->create($request->all())));
 
 
+
+            return $this->registered($request, $user)
+                ?: redirect($this->redirectPath());
+
+        }
+        else{
+            $this->validator($request->all())->validate();
+
+            event(new Registered($user = $this->create($request->all())));
+
+            $this->guard()->login($user);
+
+            return $this->registered($request, $user)
+                ?: redirect($this->redirectPath());
+        }
 
     }
 
