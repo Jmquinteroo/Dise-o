@@ -34,27 +34,6 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        if (Auth::check()) {
-            $this->middleware('auth');
-            echo '<<div class="card-body">
-                    hola
-            </div>>';
-
-        }
-        else{
-            $this->middleware('guest');
-
-        }
-
-
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -95,7 +74,7 @@ class RegisterController extends Controller
             ]
         );
 
-        if ($User -> Hasrole('admin')) {
+        if (Auth::user() -> Hasrole('admin')) {
             $User->assignRole('admin');
             return $User;
 

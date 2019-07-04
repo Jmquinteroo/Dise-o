@@ -31,8 +31,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 ////Route::post('borrarlugar','lugar\registrarLugaresController@destroy');
 //Route::get('lugares/{id}   ','lugar\Admin_Lugares@update')->name('editarlugar');
 //Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
-Route::resource('eventos','evento\Admin_Eventos');
-Route::resource('lugares','lugar\Admin_Lugares');
+Route::middleware('auth')->resource('eventos','evento\Admin_Eventos');
+Route::middleware('auth')->resource('lugares','lugar\Admin_Lugares');
 Route::view('/welcome','welcome');
 Route::resource('adminregistro','Registro_admin\Admin_registro');
 
