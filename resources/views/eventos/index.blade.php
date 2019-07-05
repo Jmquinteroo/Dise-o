@@ -2,13 +2,11 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Eventos</h2>
+        <div class="col-md-10">
+            <div class="text-center">
+                <h1>Eventos</h1>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('eventos.create') }}"> Regitrar evento</a>
-            </div>
+
         </div>
     </div>
 
@@ -18,40 +16,42 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
-        <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Lugar_id</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Precios</th>
-            <th width="280px">Action</th>
-        </tr>
+{{--    <table class="table table-bordered">--}}
+{{--        <tr>--}}
+{{--            <th>id</th>--}}
+            <spam>Nombre</spam>
+{{--            <th>Lugar_id</th>--}}
+{{--            <th>Fecha</th>--}}
+{{--            <th>Hora</th>--}}
+{{--            <th>Precios</th>--}}
+{{--            <th width="280px">Action</th>--}}
+{{--        </tr>--}}
         @foreach ($eventos as $evento)
-            <tr>
-                <td>{{ $evento->id }}</td>
+{{--            <tr>--}}
+{{--                <td>{{ $evento->id }}</td>--}}
                 <td>{{ $evento->nombre }}</td>
-                <td>{{ $evento->lugar_id }}</td>
-                <td>{{ $evento->fecha }}</td>
-                <td>{{ $evento->hora }}</td>
-                <td>{{ $evento->precios }}</td>
+{{--                <td>{{ $evento->lugar_id }}</td>--}}
+{{--                <td>{{ $evento->fecha }}</td>--}}
+{{--                <td>{{ $evento->hora }}</td>--}}
+{{--                <td>{{ $evento->precios }}</td>--}}
                 <td>
                     <form action="{{ route('eventos.destroy',$evento->id) }}" method="POST">
 
                         <a class="btn btn-info" href="{{ route('eventos.show',$evento->id) }}">Show</a>
 
-                        <a class="btn btn-primary" href="{{ route('eventos.edit',$evento->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('eventos.edit',$evento->id) }}">Modificar</a>
 
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
                     </form>
                 </td>
-            </tr>
+{{--            </tr>--}}
         @endforeach
-    </table>
+{{--    </table>--}}
 
-
+    <div class="text-right">
+        <a class="btn btn-success" href="{{ route('eventos.create') }}"> Agregar evento</a>
+    </div>
 @endsection
