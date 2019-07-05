@@ -28,6 +28,7 @@
                 {{--                <tr>--}}
 {{--                <div>--}}
                     <spam>Nombre:</spam>
+
 {{--                </div>--}}
 {{--                </br>--}}
                 {{--                                <th scope="col">Capacidad</th>--}}
@@ -43,6 +44,7 @@
                     {{--                        <tr>--}}
 {{--                    <br>--}}
 {{--                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+
                         <label> {{$lugar->nombre}}</label>
 {{--                    </div>--}}
 

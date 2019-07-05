@@ -42,7 +42,7 @@ class Admin_Eventos extends Controller
     {
         $request->validate([
             'nombre'=>'required|string',
-            'lugar_id'=>'required|integer',
+            'lugar_id'=>'required|integer|exists:lugares,id',
             'fecha'=>'required|date|after:today',
             'hora'=>'required|date_format:H:i',
             'precios'=>'required|integer',

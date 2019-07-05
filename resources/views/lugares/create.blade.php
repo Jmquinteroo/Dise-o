@@ -43,14 +43,16 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 dropdown show text-center">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Tipo de lugar
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" id="estadio" >Estadio</a>
-                        <a class="dropdown-item" id="teatro">Teatro</a>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <div class="form-group">
+                        <strong>Tipo de lugar:</strong>
+                        <select name="tipo_lugar" required>
+                            <option value="" disabled selected>Seleccionar</option>
+                            {{--@foreach ($lugares->all() as $lugar)--}}
+                            <option value="Estadio">Estadio</option>
+                            <option value="Teatro">Teatro</option>
+                            {{--@endforeach--}}
+                        </select>
                     </div>
                 </div>
 

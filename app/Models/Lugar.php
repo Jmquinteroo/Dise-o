@@ -10,6 +10,7 @@ class Lugar extends Model
     protected $table = 'lugares';
     protected $fillable = [
         'nombre',
+        'tipo_lugar',
         'capacidad',
         'direccion',
         'barrio',

@@ -47,6 +47,7 @@ class Admin_Lugares extends Controller
         $request->validate([
             'nombre'=>'required|string|unique:lugares',
             'capacidad'=>'required|integer',
+            'tipo_lugar'=>'required|string|exists:lugares',
             'direccion'=>'required|string',
             'barrio'=>'required|string',
             'sectores'=>'required|integer',
@@ -56,6 +57,7 @@ class Admin_Lugares extends Controller
         $lugar = new Lugar();
         $lugar->nombre = $input->nombre;
         $lugar->capacidad = $input->capacidad;
+        $lugar->tipo_lugar=$input->tipo_lugar;
         $lugar->direccion = $input->direccion;
         $lugar->barrio = $input->barrio;
         $lugar->sectores = $input->sectores;

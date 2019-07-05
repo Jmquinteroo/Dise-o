@@ -16,6 +16,7 @@ class CreateLugaresTable extends Migration
         Schema::create('lugares', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
+            $table->string('tipo_lugar');
             $table->string('capacidad');
             $table->string('direccion');
             $table->string('barrio');
