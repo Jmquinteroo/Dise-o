@@ -5,6 +5,8 @@ namespace App\Http\Controllers\lugar;
 use App\Models\Lugar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class Admin_Lugares extends Controller
 {
@@ -14,10 +16,11 @@ class Admin_Lugares extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {if (Auth::user() -> Hasrole('admin')) {
         $lugares=Lugar::all();
         return view('lugares.index',compact('lugares'));
 
+    }
     }
 
     /**
@@ -28,10 +31,12 @@ class Admin_Lugares extends Controller
     public function create()
     {
         //
+        if (Auth::user() -> Hasrole('admin')) {
         $lugares=Lugar::all();
         return view('lugares.create',compact('lugares'));
 
 
+    }
     }
 
     /**
@@ -82,8 +87,10 @@ class Admin_Lugares extends Controller
     public function show(Lugar $id)
     {
         //
+        if (Auth::user() -> Hasrole('admin')) {
         $lugar=Lugar::find($id);
         return $lugar;
+    }
     }
 
     /**
@@ -94,11 +101,12 @@ class Admin_Lugares extends Controller
      */
     public function edit($id)
     {
-
+        if (Auth::user() -> Hasrole('admin')) {
         $lugar=Lugar::find($id);
 
         return view('lugares.edit',compact('lugar'));
         //
+    }
     }
 
 

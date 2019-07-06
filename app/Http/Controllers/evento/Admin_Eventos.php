@@ -6,6 +6,8 @@ use App\Models\Evento;
 use App\Models\Lugar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class Admin_Eventos extends Controller
 {
@@ -15,10 +17,11 @@ class Admin_Eventos extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { if (Auth::user() -> Hasrole('admin')) {
         $eventos=Evento::all();
         return view('eventos.index',compact('eventos'));
         //
+    }
     }
 
     /**
@@ -27,10 +30,11 @@ class Admin_Eventos extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+
+    { if (Auth::user() -> Hasrole('admin')) {
         $lugares=Lugar::all();
         return view('eventos.create',compact('lugares'));
-    }
+    }}
 
     /**
      * Store a newly created resource in storage.
@@ -62,8 +66,9 @@ class Admin_Eventos extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Evento $evento)
-    {
+    {if (Auth::user() -> Hasrole('admin')) {
         return view('eventos.show',compact('evento'));
+    }
     }
 
     /**
@@ -73,9 +78,10 @@ class Admin_Eventos extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Evento $evento)
-    {
+    {if (Auth::user() -> Hasrole('admin')) {
         $lugares=Lugar::all();
         return view('eventos.edit',compact('evento'),compact('lugares'));
+    }
     }
 
     /**
