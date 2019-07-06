@@ -55,7 +55,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Hora:</strong>
-                    <input type="time" name="hora" value="{{ $evento->hora }}" class="form-control" required>
+                    <input type="time" name="hora"  class="form-control" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

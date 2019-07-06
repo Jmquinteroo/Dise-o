@@ -15,7 +15,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class="row">
+
 {{--    <div class="col-md-10 offset-1 ">--}}
             @if(isset($lugares))
 {{--                <br>--}}
@@ -44,8 +44,12 @@
                     {{--                        <tr>--}}
 {{--                    <br>--}}
 {{--                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+                    <div class="col-4">
+                        <td> {{$lugar->nombre}}</td>
 
-                        <label> {{$lugar->nombre}}</label>
+                    </div>
+
+
 {{--                    </div>--}}
 
 
@@ -56,12 +60,17 @@
 
                     {{--                            <td>--}}
 {{--                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+
+                    <td>
+
                         <form action="{{ route('lugares.destroy',$lugar->id) }}" method="POST">
                             <a class="btn btn-primary" href="{{ route('lugares.edit',$lugar->id) }}">Editar</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
+                    </td>
+
 {{--                    </div>--}}
 
                     {{--                    </td>--}}
@@ -90,7 +99,7 @@
                     {{--            </div>--}}
                 </form>
 
-        </div>
+
 
     </div>
 
