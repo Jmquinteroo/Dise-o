@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
 
 
 
-        $user= \App\User::create(['name'=>'jorge','apellido'=>'quintero', 'email'=>'jmqo25@gmail.com','fecha_nacimiento'=>Carbon::parse('12-08-1999'),'telefono'=>2589543, 'password'=>Hash::make('Jorge.123')]);
+        $user= \App\User::create(['name'=>'jorge','apellido'=>'quintero', 'email'=>'jmqo25@gmail.com','fecha_nacimiento'=>Carbon::parse('12-08-1999'),'telefono'=>2589543, 'password'=>Hash::make('123456789')]);
 $user->assignRole('admin');
 
     }
