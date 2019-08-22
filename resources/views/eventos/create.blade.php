@@ -43,7 +43,7 @@
                         <select name="lugar_id" required>
                             <option value="" disabled selected>Seleccionar lugar</option>
                             @foreach ($lugares->all() as $lugar)
-                                <option value="<?php echo $lugar['id'];?>">{{$lugar['nombre']}}</option>
+                                <option value="{{$lugar['id']}}">{{$lugar['nombre']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -51,13 +51,24 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
-                        <strong>Fecha:</strong>
+                        <strong>Fecha de inicio:</strong>
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
-                        <input type="date" name="fecha" class="form-control" required>
+                        <input type="date" name="fecha_inicio" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group text-center">
+                        <strong>Fecha fin:</strong>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group text-center">
+                        <input type="date" name="fecha_fin" class="form-control" required>
                     </div>
                 </div>
 

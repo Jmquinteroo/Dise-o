@@ -16,87 +16,66 @@
         </div>
     @endif
 
-{{--    <div class="col-md-10 offset-1 ">--}}
-            @if(isset($lugares))
-{{--                <br>--}}
+    <div class="col-md-10 offset-1 ">
+        @if(isset($lugares))
+        <br>
+            <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7 offset-lg-3 offset-md-3">
+                <div class="jumbotron text-center">
+                    <div class="table-responsive">
+                        <br class="table">
+                            <thead>
+                                <tr>
+                                    <div>
+                                        <spam>Nombre:</spam>
 
-                {{--            <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7 offset-lg-3 offset-md-3">--}}
-                {{--                <div class="jumbotron text-center">--}}
-                {{--                    <div class="table-responsive">--}}
-                {{--                        <table class="table">--}}
-                {{--                            <thead>--}}
-                {{--                <tr>--}}
-{{--                <div>--}}
-                    <spam>Nombre:</spam>
-
-{{--                </div>--}}
-{{--                </br>--}}
-                {{--                                <th scope="col">Capacidad</th>--}}
-                {{--                                <th scope="col">Direccion</th>--}}
-                {{--                                <th scope="col">Barrio</th>--}}
-                {{--                                <th scope="col">Sectores</th>--}}
-                {{--                </tr>--}}
-                {{--                            </thead>--}}
-                {{--                <div class="col-md-6">--}}
-                {{--            <tbody>--}}
-
-                @foreach($lugares as $lugar)
-                    {{--                        <tr>--}}
-{{--                    <br>--}}
-{{--                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
-                    <div class="col-4">
-                        <td> {{$lugar->nombre}}</td>
-
+                                    </div>
+                                </tr>
+                            </thead>
+                            <div class="col-md-6">
+                                <tbody>
+                                    @foreach($lugares as $lugar)
+                                        <tr>
+                                            <br>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    <div class="col-4">
+                                                        <td> {{$lugar->nombre}}</td>
+                                                    </div>
+                                                </div>
+                                                <td>
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        <td>
+                                                            <form action="{{ route('lugares.destroy',$lugar->id) }}" method="POST">
+                                                                <a class="btn btn-primary" href="{{ route('lugares.edit',$lugar->id) }}">Editar</a>
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                            </form>
+                                                        </td>
+                                                    </div>
+                                                </td>
+                                            </br>
+                                            <label>{{ $lugar->name }}</label>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </div>
+                        </br>
                     </div>
-
-
-{{--                    </div>--}}
-
-
-                    {{--                                    <td> {{$lugar->capacidad}}</td>--}}
-                    {{--                                    <td> {{$lugar->direccion}}</td>--}}
-                    {{--                                    <td> {{$lugar->barrio}}</td>--}}
-                    {{--                                    <td> {{$lugar->sectores}}</td>--}}
-
-                    {{--                            <td>--}}
-{{--                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
-
-                    <td>
-
-                        <form action="{{ route('lugares.destroy',$lugar->id) }}" method="POST">
-                            <a class="btn btn-primary" href="{{ route('lugares.edit',$lugar->id) }}">Editar</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-
-{{--                    </div>--}}
-
-                    {{--                    </td>--}}
-                    {{--                </tr>--}}
-
-                    {{--<label>{{ $lugar->name }}</label>--}}
-                @endforeach
-                {{--            </tbody>--}}
-
-                {{--                </div>--}}
-
-                {{--                        </table>--}}
-                {{--                    </div>--}}
-            @endif
-            {{--                </div>--}}
-{{--            <br>--}}
+                </div>
+            </div>
+        </br>
+        @endif
+    </div>
 
                 <form method="get" action="{{route('lugares.create')}}">
                     @csrf
-                    {{--            <div class="form-group row mb-0">--}}
-                    <div class="text-right">
+                    <div class="form-group row mb-0 text-center">
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Agregar lugar') }}
                         </button>
                     </div>
-                    {{--            </div>--}}
+                    </div>
                 </form>
 
 

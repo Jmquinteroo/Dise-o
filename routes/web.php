@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('eventos/{id}/reservar', 'tiquete\Admin_Tiquetes@reservar');
+
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/registrarlugar', 'lugar\registrarLugaresController@index')->name('registrarlugar');
 ////Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
@@ -50,6 +52,9 @@ Route::get('lugares/{id}/destroy','lugar\Admin_Lugares@index') -> name('lugares.
 
 Route::view('/welcome','welcome');
 Route::resource('adminregistro','Registro_admin\Admin_registro');
+
+Route::resource('tiquetes','tiquete\Admin_Tiquetes');
+
 
 
 

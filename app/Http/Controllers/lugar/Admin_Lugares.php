@@ -48,7 +48,6 @@ class Admin_Lugares extends Controller
     public function store(Request $request)
     {
 
-
         $request->validate([
             'nombre'=>'required|string|unique:lugares',
             'capacidad'=>'required|integer',

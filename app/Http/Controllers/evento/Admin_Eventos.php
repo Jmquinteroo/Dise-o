@@ -48,7 +48,8 @@ class Admin_Eventos extends Controller
         $request->validate([
             'nombre'=>'required|string',
             'lugar_id'=>'required|integer|exists:lugares,id',
-            'fecha'=>'required|date|after:today',
+            'fecha_inicio'=>'required|date|after:today',
+            'fecha_fin'=>'required|date|after:fecha_inicio',
             'hora'=>'required|date_format:H:i',
             'precios'=>'required|integer',
         ]);
@@ -97,7 +98,8 @@ class Admin_Eventos extends Controller
         $request->validate([
             'nombre'=>'required|string',
             'lugar_id'=>'required|integer',
-            'fecha'=>'required|date|after:today',
+            'fecha_inicio'=>'required|date|after:today',
+            'fecha_fin'=>'required|date|after:fecha_inicio',
             'hora'=>'required|date_format:H:i',
             'precios'=>'required|integer',
         ]);
@@ -119,6 +121,6 @@ class Admin_Eventos extends Controller
         $evento->delete();
 
         return redirect()->route('eventos.index')
-            ->with('Exito','Evento eliminado correctamente');
+            ->with('Exito','Evento desactivado correctamente');
     }
 }

@@ -26,8 +26,14 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Fecha:</strong>
-                {{ $evento->fecha }}
+                <strong>Fecha inicio:</strong>
+                {{ $evento->fecha_inicio }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Fecha fin:</strong>
+                {{ $evento->fecha_fin }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -39,7 +45,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Precios:</strong>
-                {{ $evento->precios }}
+                <a href="{{ route('eventos/{id}/reservar') }}">{{ $evento->precios }}</a>
             </div>
         </div>
     </div>

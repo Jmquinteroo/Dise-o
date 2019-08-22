@@ -48,8 +48,14 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Fecha:</strong>
-                    <input type="date" value="{{ $evento->fecha }}" name="fecha" class="form-control" required>
+                    <strong>Fecha de inicio:</strong>
+                    <input type="date" name="fecha_inicio" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Fecha fin:</strong>
+                    <input type="date" name="fecha_fin" class="form-control" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

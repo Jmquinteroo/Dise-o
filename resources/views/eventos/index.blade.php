@@ -37,14 +37,14 @@
                 <td>
                     <form action="{{ route('eventos.destroy',$evento->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ route('eventos.show',$evento->id) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('eventos.show',$evento->id) }}">Detalle</a>
 
                         <a class="btn btn-primary" href="{{ route('eventos.edit',$evento->id) }}">Modificar</a>
 
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <button type="submit" class="btn btn-danger">Desactivar</button>
                     </form>
                 </td>
             </tr>
