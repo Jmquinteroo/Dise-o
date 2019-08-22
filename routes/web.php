@@ -33,7 +33,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('lugares/{id}   ','lugar\Admin_Lugares@update')->name('editarlugar');
 //Route::post('/registrarlugar', 'lugar\registrarLugaresController@store');
 Route::middleware('auth')->resource('eventos','evento\Admin_Eventos');
-Route::middleware('auth')->resource('lugares','lugar\Admin_Lugares');
+//Route::middleware('auth')->resource('lugares','lugar\Admin_Lugares');
+
+
+Route::middleware('AdminMiddleware:admin lugares')->get('lugares','lugar\Admin_Lugares@index') -> name('lugares.index');
+Route::get('lugares/{id}/edit','lugar\Admin_Lugares@edit')-> name('lugares.edit');
+Route::put('lugares/{id}/edit','lugar\Admin_Lugares@update')-> name('lugares.update');
+Route::post('lugares/{id}/edit','lugar\Admin_Lugares@update')-> name('lugares.update');
+Route::get('lugares/create','lugar\Admin_Lugares@create')-> name('lugares.create');
+Route::put('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
+Route::post('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
+Route::delete('lugares/{id}/destroy','lugar\Admin_Lugares@destroy') -> name('lugares.destroy');
+Route::get('lugares/{id}/destroy','lugar\Admin_Lugares@index') -> name('lugares.destroy');
+
+
+
 Route::view('/welcome','welcome');
 Route::resource('adminregistro','Registro_admin\Admin_registro');
 

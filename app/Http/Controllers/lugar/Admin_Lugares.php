@@ -16,11 +16,11 @@ class Admin_Lugares extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {if (Auth::user() -> Hasrole('admin')) {
+    {
         $lugares=Lugar::all();
         return view('lugares.index',compact('lugares'));
 
-    }
+
     }
 
     /**

@@ -2,6 +2,40 @@
 
 @section('content')
 <div class="container">
+    <body>
+    <div class="top-right links">
+        @if (auth()->check())
+            @can('read user')
+                <a href="{{ route('eventos.index') }}">Eventos</a>
+                <a href="{{ route('lugares.index') }}">Lugares</a>
+                <a href="{{ route('register') }}">Registrar Admin</a>
+                <a href="{{ url('/home') }}">Home</a>
+            @endcan
+
+
+            @if (auth()->user()->isAdministrator())
+                <a href="{{ route('eventos.index') }}">Eventos</a>
+                <a href="{{ route('lugares.index') }}">Lugares</a>
+                <a href="{{ route('register') }}">Registrar Admin</a>
+                <a href="{{ url('/home') }}">Home</a>
+
+            @else
+
+                <a href="{{ url('/home') }}">Home</a>
+                <a href="{{ route('register') }}">Register</a>
+            @endif
+        @else
+
+            <a href="{{ route('register') }}">Register</a>
+            <a href="{{ route('login') }}">Login</a>
+
+        @endif
+    </div>
+
+
+
+
+    </body>
     <div class="row justify-content-center">
         <div class="col-md-8">
 

@@ -17,11 +17,12 @@ class Admin_Eventos extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { if (Auth::user() -> Hasrole('admin')) {
+    {
         $eventos=Evento::all();
         return view('eventos.index',compact('eventos'));
         //
-    }
+
+
     }
 
     /**

@@ -23,12 +23,14 @@ class RolesAndPermissions extends Seeder
         Permission::create(['name' => 'read user']);
         Permission::create(['name' => 'update user']);
         Permission::create(['name' => 'delete user']);
+        Permission::create(['name' => 'admin lugares']);
 
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo('create user');
         $role->givePermissionTo('read user');
         $role->givePermissionTo('update user');
         $role->givePermissionTo('delete user');
+        $role->givePermissionTo('admin lugares');
 
         $role = Role::create(['name' => 'cliente']);
         $role->givePermissionTo('update user');
