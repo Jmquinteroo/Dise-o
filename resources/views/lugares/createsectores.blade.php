@@ -35,23 +35,29 @@
                     </div>
                 </div>
 
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group text-center">
+                        <strong>Nombre:</strong>
+                    </div>
+                </div>  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group text-center">
+                        <strong>capacidad:</strong>
+                    </div>
+                </div>
+
                 @for($i=0;$i<$sectore;$i++)
 
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="form-group text-center">
-                            <strong>Nombre:</strong>
-                        </div>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+
+                    <div class="col-xs-6 col-sm-6col-md-6 col-lg-5 offset-1">
                         <div class="form-group text-center">
                             <input type="text" id="nombresector[]" name="nombresector[]" class="form-control" placeholder="Nombre" required autofocus>
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5 offset-1">
                         <div class="form-group text-center">
-                            <input type="number" id="capacidadsector[]" name="capacidadsector[]" class="form-control" placeholder="Nombre" required autofocus>
+                            <input type="number" id="capacidadsector[]" name="capacidadsector[]" class="form-control" placeholder="capacidad" required autofocus>
                         </div>
                     </div>
 
