@@ -23,7 +23,7 @@
 {{--    <table class="table table-bordered">--}}
 {{--        <tr>--}}
 {{--            <th>id</th>--}}
-            <spam>Nombre</spam>
+
 {{--            <th>Lugar_id</th>--}}
 {{--            <th>Fecha</th>--}}
 {{--            <th>Hora</th>--}}
@@ -32,18 +32,16 @@
 {{--        </tr>--}}
         @foreach ($eventos as $evento)
             <tr>
-                <td>{{ $evento->id }}</td>
+                <spam><b>Nombre :</b></spam>
                 <td>{{ $evento->nombre }}</td>
-                <td>{{ $evento->lugar_id }}</td>
-                <td>{{ $evento->fecha }}</td>
-                <td>{{ $evento->hora }}</td>
-                <td>{{ $evento->precios }}</td>
+
+
                 <td>
                     <form action="{{ route('eventos.destroy',$evento->id) }}" method="POST">
 
                         <a class="btn btn-info" href="{{ route('eventos.show',$evento->id) }}">Detalle</a>
 
-                        <a class="btn btn-primary" href="{{ route('eventos.edit',$evento->id) }}">Modificar</a>
+                        <a class="btn btn-primary" href="{{ route('eventos.edit',$evento->id)  }}">Modificar</a>
 
                         @csrf
                         @method('DELETE')

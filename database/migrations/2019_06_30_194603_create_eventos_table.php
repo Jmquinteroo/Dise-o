@@ -18,6 +18,9 @@ class CreateEventosTable extends Migration
             $table->string('nombre');
             $table->unsignedBigInteger('lugar_id');
             $table->foreign('lugar_id')->references('id')->on('lugares')->onUpdate('cascade')->onDelete('cascade');
+
+
+
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->time('hora');

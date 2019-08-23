@@ -17,9 +17,9 @@ class CreateLugaresTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('tipo_lugar');
-            $table->string('capacidad');
+            //$table->string('capacidad');
             $table->string('direccion');
-            $table->string('barrio');
+            //$table->string('barrio');
             $table->Integer('sectores');
 
             $table->timestamps();

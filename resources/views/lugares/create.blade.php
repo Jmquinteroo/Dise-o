@@ -21,7 +21,7 @@
     @endif
 
     <div class="col-md-10">
-        <form action="{{ route('lugares.store') }}" method="POST">
+        <form action="{{ action('lugar\Admin_Lugares@crearsectores')}}" method="POST">
             @csrf
 
             <div class="row">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <div class="col-xs-6 col-sm-6 col-md-6 text-center">
                     <div class="form-group">
                         <strong>Tipo de lugar:</strong>
                         <select name="tipo_lugar" required>
@@ -56,31 +56,30 @@
                     </div>
                 </div>
 
-{{--                <div class="col-xs-12 col-sm-12 col-md-12 text-center">--}}
-{{--                    <div class="dropdown">--}}
-{{--                        <strong>Tipo:</strong>--}}
-{{--                        <select name="Tipo" required>--}}
-{{--                            <option id="estadio"> Estadio </option>--}}
-{{--                            <option id="teatro"> Teatro </option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="col-xs-12 col-sm-12 col-md-12 text-center">--}}
+                {{--                    <div class="dropdown">--}}
+                {{--                        <strong>Tipo:</strong>--}}
+                {{--                        <select name="Tipo" required>--}}
+                {{--                            <option id="estadio"> Estadio </option>--}}
+                {{--                            <option id="teatro"> Teatro </option>--}}
+                {{--                        </select>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
 
-{{--                @if()--}}
-{{--                @endif--}}
+                {{--                @if()--}}
+                {{--                @endif--}}
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group text-center">
-                        <strong>Capacidad:</strong>
-                    </div>
-                </div>
+                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+                    {{--<div class="form-group text-center">--}}
+                        {{--<strong>Capacidad:</strong>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group text-center">
-                        <input type="text" name="capacidad" class="form-control" placeholder="Capacidad" required
-                               autofocus>
-                    </div>
-                </div>
+                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+                    {{--<div class="form-group text-center">--}}
+                        {{--<input type="number" name="capacidad" class="form-control" placeholder="Capacidad" required>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
@@ -90,22 +89,21 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
-                        <input type="text" name="direccion" class="form-control" placeholder="Dirección" required
-                               autofocus>
+                        <input type="text" name="direccion" class="form-control" placeholder="Dirección" required>
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group text-center">
-                        <strong>Barrio:</strong>
-                    </div>
-                </div>
+                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+                    {{--<div class="form-group text-center">--}}
+                        {{--<strong>Barrio:</strong>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group text-center">
-                        <input type="text" name="barrio" class="form-control" placeholder="Barrio" required autofocus>
-                    </div>
-                </div>
+                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+                    {{--<div class="form-group text-center">--}}
+                        {{--<input type="text" name="barrio" class="form-control" placeholder="Barrio" required>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
@@ -115,47 +113,50 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
-                        <input type="text" name="sectores" class="form-control" placeholder="Sectores" required
-                               autofocus>
+                        <input type="number" name="sectores" class="form-control" placeholder="Sectores" required>
                     </div>
                 </div>
+ {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
+                    {{--<div class="form-group text-center">--}}
+                        {{--<input type="number" name="sectores" class="form-control" placeholder="Sectores" required--}}
+                               {{--onchange="mifuncion(this, 'tabla_sectores')">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
 
-                {{--            <div class="col-md-6 offset-3">--}}
-                {{--                <div class="form-group">--}}
-                {{--                    <strong>nombre:</strong>--}}
-                {{--                    <input type="text" name="nombre" class="form-control" required>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-                {{--            <div class="col-md-6 offset-3">--}}
-                {{--                <div class="form-group">--}}
-                {{--                    <strong>capacidad:</strong>--}}
-                {{--                    <input type="text" name="capacidad" class="form-control" required>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-                {{--            <div class="col-md-6 offset-3">--}}
-                {{--                <div class="form-group">--}}
-                {{--                    <strong>direccion:</strong>--}}
-                {{--                    <input type="text" name="direccion" class="form-control" required>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-                {{--            <div class="col-md-6 offset-3">--}}
-                {{--                <div class="form-group">--}}
-                {{--                    <strong>barrio:</strong>--}}
-                {{--                    <input type="text" name="barrio" class="form-control" required>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-                {{--            <div class="col-md-6 offset-3">--}}
-                {{--                <div class="form-group">--}}
-                {{--                    <strong>sectores:</strong>--}}
-                {{--                    <input type="text" name="sectores" class="form-control" required>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
+
+
+                {{--<div id="lista_sectores" class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-2">--}}
+                    {{--<table id="tabla_sectores" class="table table-bordered">--}}
+                        {{--<thead style="background-color: gray; text-align: center">--}}
+                            {{--<tr>--}}
+                                {{--<td>nombre</td>--}}
+                                {{--<td>capacidad</td>--}}
+                            {{--</tr>--}}
+                        {{--</thead>--}}
+
+                        {{--<tr>--}}
+                            {{--<td> <input type="text" id="nombre1[]" name="nombre1[]" class="form-control" placeholder="Nombre" required autofocus></td>--}}
+                            {{--<td><input type="number" id="nombre2[]" name="nombre2[]" class="form-control" placeholder="capacidad" required autofocus></td>--}}
+                        {{--</tr>--}}
+                    {{--</table>--}}
+
+
+
+
+
+                    {{--<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">--}}
+                        {{--<div class="form-group text-center">--}}
+                            {{--<strong>Nombre:</strong>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+
+                {{--</div>--}}
 
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
                     <a class="btn btn-primary" href="{{ route('lugares.index') }}"> Volver</a>
                 </div>
-
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
                     <button type="submit" class="btn btn-primary">Registrar lugar</button>
                 </div>
@@ -167,7 +168,35 @@
 
 
 
+    <script>
+        function mifuncion(obj, id_table) {
 
+
+            if ($(obj).val() >0) {
+                let a = '<thead style="background-color: gray; text-align: center">\n' +
+                    '<tr>\n' +
+                    '                            <td>nombre</td>\n' +
+                    '                            <td>capacidad</td>\n' +
+                    '                        </tr>\n' +
+                    '                        </thead>';
+
+
+                for (paso = 0; paso < $(obj).val(); paso++) {
+                    // Se ejecuta 5 veces, con valores desde paso desde 0 hasta 4.
+                    a += '<tr>\n' +
+                        '                        <td> <input type="text" id="nombresector[]" name="nombresector[]" class="form-control" placeholder="Nombresector" required autofocus></td>\n' +
+                        '                            <td><input type="number" id="capacidadsector[]" name="capacidadsector[]" class="form-control" placeholder="capacidadsector" required autofocus></td>\n' +
+                        '                        </tr>';
+                }
+                $('#' + id_table).html(a);
+            }else{
+                $('#' + id_table).html('');
+            }
+        }
+
+
+
+    </script>
 
 
 @endsection

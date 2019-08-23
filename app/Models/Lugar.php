@@ -11,9 +11,9 @@ class Lugar extends Model
     protected $fillable = [
         'nombre',
         'tipo_lugar',
-        'capacidad',
+       // 'capacidad',
         'direccion',
-        'barrio',
+        //'barrio',
         'sectores'
     ];
 
