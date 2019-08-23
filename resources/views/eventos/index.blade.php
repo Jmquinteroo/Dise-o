@@ -14,6 +14,10 @@
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
+    @elseif ($message = Session::get('Error'))
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
     @endif
 
 {{--    <table class="table table-bordered">--}}

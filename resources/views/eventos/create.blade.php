@@ -91,7 +91,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
-                        <input type="text" name="precios" class="form-control" required>
+                        <input type="number" name="precios" class="form-control" required>
                     </div>
                 </div>
 

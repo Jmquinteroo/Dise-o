@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('eventos/{id}/reservar', 'tiquete\Admin_Tiquetes@reservar');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/registrarlugar', 'lugar\registrarLugaresController@index')->name('registrarlugar');
@@ -53,6 +53,11 @@ Route::get('lugares/{id}/destroy','lugar\Admin_Lugares@index') -> name('lugares.
 Route::view('/welcome','welcome');
 Route::resource('adminregistro','Registro_admin\Admin_registro');
 
+Route::get('eventos/{evento}/{precios}/reservar', 'tiquete\Admin_Tiquetes@reservar')-> name('tiquetes.reservar');
+Route::put('pago', 'tiquete\Admin_Tiquetes@mostrar_pago')-> name('tiquetes.mostrar_pago');
+Route::post('pago', 'tiquete\Admin_Tiquetes@mostrar_pago')-> name('tiquetes.mostrar_pago');
+Route::put('pagar','tiquete\Admin_Tiquetes@pagar') -> name('tiquete.pagar');
+Route::post('pagar','tiquete\Admin_Tiquetes@pagar') -> name('tiquete.pagar');
 Route::resource('tiquetes','tiquete\Admin_Tiquetes');
 
 

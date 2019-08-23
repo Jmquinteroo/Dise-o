@@ -13,5 +13,9 @@ class TiqueteSeeder extends Seeder
     public function run()
     {
         \App\Models\Tiquete::create(['evento_id'=>1,'precio'=>20000,'estado'=>'disponible']);
+        \App\Models\Tiquete::create(['evento_id'=>1,'precio'=>20000,'estado'=>'disponible']);
+        \App\Models\Tiquete::create(['evento_id'=>1,'precio'=>20000,'estado'=>'disponible']);
+        \App\Models\Tiquete::create(['evento_id'=>1,'precio'=>20000,'estado'=>'disponible']);
+        \App\Models\Tiquete::create(['evento_id'=>1,'precio'=>20000,'estado'=>'disponible']);
     }
 }

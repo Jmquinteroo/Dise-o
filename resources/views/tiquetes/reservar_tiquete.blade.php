@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -10,7 +11,15 @@
             </div>
         </div>
     </div>
-
+    @if ($message = Session::get('Exito'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @elseif ($message = Session::get('Error'))
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -46,9 +55,12 @@
             <div class="form-group">
                 <strong>Precios:</strong>
                 {{ $evento->precios }}
-                @if (auth()->check())
-                    <a href="{{ route('tiquetes.reservar',[$evento,$evento->precios]) }}">Reservar</a>
-                @endif
+                <form action="{{ route('tiquetes.mostrar_pago') }}" method="POST">
+                    @csrf
+                    @if (auth()->check())
+                        <button type="submit" class="btn btn-primary btn-success">Pagar tiquete</button>
+                    @endif
+                </form>
 
             </div>
         </div>
