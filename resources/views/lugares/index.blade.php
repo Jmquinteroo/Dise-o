@@ -16,75 +16,30 @@
         </div>
     @endif
 
-    <div class="col-md-10 offset-1 ">
-        @if(isset($lugares))
-        <br>
-            <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7 offset-lg-3 offset-md-3">
-                <div class="jumbotron text-center">
-                    <div class="table-responsive">
-                        <br class="table">
-                            <thead>
-                                <tr>
-                                    <div>
-                                        <spam>Nombre:</spam>
-
-                                    </div>
-                                </tr>
-                            </thead>
-                            <div class="col-md-6">
-                                <tbody>
-                                    @foreach($lugares as $lugar)
-                                        <tr>
-                                            <br>
-                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                    <div class="col-4">
-                                                        <td> {{$lugar->nombre}}</td>
-                                                    </div>
-                                                </div>
-                                                <td>
-                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                        <td>
-                                                            <form action="{{ route('lugares.destroy',$lugar->id) }}" method="POST">
-                                                                <a class="btn btn-primary" href="{{ route('lugares.edit',$lugar->id) }}">Editar</a>
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                                                            </form>
-                                                        </td>
-                                                    </div>
-                                                </td>
-                                            </br>
-                                            <label>{{ $lugar->name }}</label>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </div>
-                        </br>
-                    </div>
-                </div>
-            </div>
-        </br>
-        @endif
-    </div>
-
-                <form method="get" action="{{route('lugares.create')}}">
-                    @csrf
-                    <div class="form-group row mb-0 text-center">
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Agregaraa lugar') }}
-                        </button>
-                    </div>
-                    </div>
-                </form>
+                                @foreach ($lugares as $lugar)
+                                    <tr>
+                                        <spam><b>Nombre :</b></spam>
+                                        <td>{{ $lugar->nombre }}</td>
 
 
+                                        <td>
+                                            <form action="{{ route('lugares.destroy',$lugar->id) }}" method="POST">
 
-    </div>
+{{--                                                <a class="btn btn-info" href="{{ route('eventos.show',$evento->id) }}">Detalle</a>--}}
 
-{{--    <div class="col-md"></div>--}}
+                                                <a class="btn btn-primary" href="{{ route('lugares.edit',$lugar->id)  }}">Modificar</a>
 
-    {{--    </div>--}}
-{{--    </div>--}}
+                                                @csrf
+                                                @method('DELETE')
 
+                                                <button type="submit" class="btn btn-danger">Desactivar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                {{--    </table>--}}
+
+                                <div class="text-right">
+                                    <a class="btn btn-success" href="{{ route('lugares.create') }}"> Agregar evento</a>
+                                </div>
 @endsection

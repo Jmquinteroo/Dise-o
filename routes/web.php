@@ -39,18 +39,25 @@ Route::middleware('auth')->resource('eventos','evento\Admin_Eventos');
 
 
 Route::middleware('AdminMiddleware:admin lugares')->get('lugares','lugar\Admin_Lugares@index') -> name('lugares.index');
-Route::get('lugares/{id}/edit','lugar\Admin_Lugares@edit')-> name('lugares.edit');
-Route::put('lugares/{id}/edit','lugar\Admin_Lugares@update')-> name('lugares.update');
-Route::post('lugares/{id}/edit','lugar\Admin_Lugares@update')-> name('lugares.update');
-Route::get('lugares/create','lugar\Admin_Lugares@create')-> name('lugares.create');
-Route::put('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
-Route::post('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
-Route::delete('lugares/{id}/destroy','lugar\Admin_Lugares@destroy') -> name('lugares.destroy');
-Route::get('lugares/{id}/destroy','lugar\Admin_Lugares@index') -> name('lugares.destroy');
+Route::middleware('AdminMiddleware:crear lugares')->get('lugares/{id}/edit','lugar\Admin_Lugares@edit')-> name('lugares.edit');
+Route::middleware('AdminMiddleware:crear lugares')->put('lugares/{id}/edit','lugar\Admin_Lugares@update')-> name('lugares.update');
+Route::middleware('AdminMiddleware:crear lugares')->post('lugares/{id}/edit','lugar\Admin_Lugares@update')-> name('lugares.update');
+Route::middleware('AdminMiddleware:editar lugares')->get('lugares/create','lugar\Admin_Lugares@create')-> name('lugares.create');
+Route::middleware('AdminMiddleware:editar lugares')->put('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
+Route::middleware('AdminMiddleware:editar lugares')->post('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
+Route::middleware('AdminMiddleware:borrar lugares')->delete('lugares/{id}/destroy','lugar\Admin_Lugares@destroy') -> name('lugares.destroy');
+Route::middleware('AdminMiddleware:borrar lugares')->get('lugares/{id}/destroy','lugar\Admin_Lugares@index') -> name('lugares.destroy');
+
+
 Route::get('tiquetes/tiquetes','tiquetes\Admin_Tiquetes@index') -> name('Tiquetes');
 
 
 
+
+
+Route::get('lugares/create/sector','sector\Admin_Sector@create')-> name('sector.create');
+Route::put('lugares/create/sector','sector\Admin_Sector@store') -> name('sector.store');
+Route::post('lugares/create/sector','sector\Admin_Sector@store') -> name('sector.store');
 
 Route::view('/welcome','welcome');
 Route::resource('adminregistro','Registro_admin\Admin_registro');

@@ -22,7 +22,7 @@
 
     <div class="col-md-10">
         @if(isset($lugar))
-        <form action="{{ action('lugar\Admin_Lugares@store') }}" method="POST">
+        <form action="{{ action('sector\Admin_Sector@store') }}" method="POST">
             @else
                 <form action="{{ route('lugares.store') }}" method="POST">
                     @endif

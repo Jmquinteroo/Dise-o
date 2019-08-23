@@ -21,7 +21,7 @@
     @endif
 
     <div class="col-md-10">
-        <form action="{{ action('lugar\Admin_Lugares@crearsectores')}}" method="POST">
+        <form action="{{ action('lugar\Admin_Lugares@store')}}" method="POST">
             @csrf
 
             <div class="row">
@@ -56,30 +56,6 @@
                     </div>
                 </div>
 
-                {{--                <div class="col-xs-12 col-sm-12 col-md-12 text-center">--}}
-                {{--                    <div class="dropdown">--}}
-                {{--                        <strong>Tipo:</strong>--}}
-                {{--                        <select name="Tipo" required>--}}
-                {{--                            <option id="estadio"> Estadio </option>--}}
-                {{--                            <option id="teatro"> Teatro </option>--}}
-                {{--                        </select>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-
-                {{--                @if()--}}
-                {{--                @endif--}}
-
-                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
-                    {{--<div class="form-group text-center">--}}
-                        {{--<strong>Capacidad:</strong>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
-                    {{--<div class="form-group text-center">--}}
-                        {{--<input type="number" name="capacidad" class="form-control" placeholder="Capacidad" required>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
@@ -93,17 +69,7 @@
                     </div>
                 </div>
 
-                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
-                    {{--<div class="form-group text-center">--}}
-                        {{--<strong>Barrio:</strong>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 
-                {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
-                    {{--<div class="form-group text-center">--}}
-                        {{--<input type="text" name="barrio" class="form-control" placeholder="Barrio" required>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group text-center">
@@ -116,49 +82,14 @@
                         <input type="number" name="sectores" class="form-control" placeholder="Sectores" required>
                     </div>
                 </div>
- {{--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">--}}
-                    {{--<div class="form-group text-center">--}}
-                        {{--<input type="number" name="sectores" class="form-control" placeholder="Sectores" required--}}
-                               {{--onchange="mifuncion(this, 'tabla_sectores')">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 
 
-
-
-                {{--<div id="lista_sectores" class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-2">--}}
-                    {{--<table id="tabla_sectores" class="table table-bordered">--}}
-                        {{--<thead style="background-color: gray; text-align: center">--}}
-                            {{--<tr>--}}
-                                {{--<td>nombre</td>--}}
-                                {{--<td>capacidad</td>--}}
-                            {{--</tr>--}}
-                        {{--</thead>--}}
-
-                        {{--<tr>--}}
-                            {{--<td> <input type="text" id="nombre1[]" name="nombre1[]" class="form-control" placeholder="Nombre" required autofocus></td>--}}
-                            {{--<td><input type="number" id="nombre2[]" name="nombre2[]" class="form-control" placeholder="capacidad" required autofocus></td>--}}
-                        {{--</tr>--}}
-                    {{--</table>--}}
-
-
-
-
-
-                    {{--<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">--}}
-                        {{--<div class="form-group text-center">--}}
-                            {{--<strong>Nombre:</strong>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-
-                {{--</div>--}}
 
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
                     <a class="btn btn-primary" href="{{ route('lugares.index') }}"> Volver</a>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                    <button type="submit" class="btn btn-primary">Registrar lugar</button>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
                 </div>
             </div>
 

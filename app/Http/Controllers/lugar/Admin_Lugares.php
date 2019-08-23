@@ -48,35 +48,6 @@ class Admin_Lugares extends Controller
      */
     public function store(Request $request)
     {
-        $input = (object)$request->input();
-       $lugar=Lugar::find( $input->idlugar);
-        $request->validate([
-            'nombresector'=>'required|array',
-            'nombresector.*'=>'string',
-            'capacidadsector'=>'required|array',
-            'capacidadsector.*'=>'string',
-
-        ]);
-
-
-        foreach($input->nombresector as $index => $nombre){
-            $sector=new Sector();
-            $sector->nombresector=$nombre;
-            $sector->capacidad = $input->capacidadsector[$index];
-            $sector->id_lugar=$lugar->id;
-            $sector->save();
-        }
-
-        return redirect()->route('lugares.index')
-            ->with('Exito','Lugar creado exitosamente');
-
-
-
-    }
-
-
-    public function crearsectores(Request $request)
-    {
         $request->validate([
             'nombre'=>'required|string|unique:lugares',
             'tipo_lugar'=>'required|string|exists:lugares',
@@ -88,6 +59,15 @@ class Admin_Lugares extends Controller
         $lugar->save();
         $sectore = $request->sectores;
         return view('lugares.createsectores',compact('sectore', 'lugar'));
+
+
+
+    }
+
+
+    public function crearsectores(Request $request)
+    {
+
     }
 
     /**
@@ -135,27 +115,30 @@ class Admin_Lugares extends Controller
         if ($lugar->nombre==$request->nombre){
         $request->validate([
             'nombre'=>'required|string',
-            'capacidad'=>'required|integer',
+            'tipo_lugar'=>'required|string|exists:lugares',
+//            'capacidad'=>'required|integer',
             'direccion'=>'required|string',
-            'barrio'=>'required|string',
+//            'barrio'=>'required|string',
             'sectores'=>'required|integer',
         ]);
         }else{
             $request->validate([
                 'nombre'=>'required|string|unique:lugares',
-                'capacidad'=>'required|integer',
+//                'capacidad'=>'required|integer',
+                'tipo_lugar'=>'required|string|exists:lugares',
                 'direccion'=>'required|string',
-                'barrio'=>'required|string',
+//                'barrio'=>'required|string',
                 'sectores'=>'required|integer',
             ]);
         }
 
 
         $lugar->nombre = $request->nombre;
-        $lugar->capacidad = $request->capacidad;
+        //$lugar->capacidad = $request->capacidad;
         $lugar->direccion = $request->direccion;
-        $lugar->barrio = $request->barrio;
+        //$lugar->barrio = $request->barrio;
         $lugar->sectores = $request->sectores;
+        $lugar->tipo_lugar=$request->tipo_lugar;
         $lugar->save();
         return redirect(route('lugares.index'));
 
@@ -163,7 +146,7 @@ class Admin_Lugares extends Controller
 
 
         //
-        return $request;
+
     }
 
 
