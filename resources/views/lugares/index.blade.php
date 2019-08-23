@@ -1,6 +1,14 @@
+
+
+
 @extends('layouts.app')
 
 @section('content')
+
+
+
+
+
     <div class="row">
         <div class="col-lg-12 margin-tb text-center">
             <div class="text-center">
@@ -25,7 +33,7 @@
                                         <td>
                                             <form action="{{ route('lugares.destroy',$lugar->id) }}" method="POST">
 
-{{--                                                <a class="btn btn-info" href="{{ route('eventos.show',$evento->id) }}">Detalle</a>--}}
+                                                <a class="btn btn-info" href="{{ route('lugares.show',$lugar->id) }}">Detalle</a>
 
                                                 <a class="btn btn-primary" href="{{ route('lugares.edit',$lugar->id)  }}">Modificar</a>
 

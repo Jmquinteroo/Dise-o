@@ -76,12 +76,13 @@ class Admin_Lugares extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Lugar $id)
+    public function show($id)
     {
         //
         if (Auth::user() -> Hasrole('admin')) {
         $lugar=Lugar::find($id);
-        return $lugar;
+        //dd($lugar);
+        return view('lugares.show',compact('lugar'));
     }
     }
 

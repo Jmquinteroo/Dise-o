@@ -47,6 +47,8 @@ Route::middleware('AdminMiddleware:editar lugares')->put('lugares/create','lugar
 Route::middleware('AdminMiddleware:editar lugares')->post('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
 Route::middleware('AdminMiddleware:borrar lugares')->delete('lugares/{id}/destroy','lugar\Admin_Lugares@destroy') -> name('lugares.destroy');
 Route::middleware('AdminMiddleware:borrar lugares')->get('lugares/{id}/destroy','lugar\Admin_Lugares@index') -> name('lugares.destroy');
+Route::middleware('AdminMiddleware:admin lugares')->get('lugares/{id}','lugar\Admin_Lugares@show') -> name('lugares.show');
+
 
 
 Route::get('tiquetes/tiquetes','tiquetes\Admin_Tiquetes@index') -> name('Tiquetes');
