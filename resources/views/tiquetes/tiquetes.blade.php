@@ -30,9 +30,10 @@
                             @foreach($tiquetes as $tiquete)
                                 <tr>
                                     <br>
+
                                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                         <div class="col-4">
-                                            <td> {{$evento_nombre}}</td>
+                                            <td> {{$evento[1]}}</td>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -49,7 +50,7 @@
                                     </br>
 
 
-                                    <label>{{ $lugar->name }}</label>
+
                                 </tr>
                             @endforeach
                             </tbody>
@@ -62,6 +63,16 @@
         @endif
     </div>
 
+    <form method="get" action="{{route('tiquete.pagar')}}">
+        @csrf
+        <div class="form-group row mb-0 text-center">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Pagar Tiquete') }}
+                </button>
+            </div>
+        </div>
+    </form>
     <form method="get" action="{{route('lugares.create')}}">
         @csrf
         <div class="form-group row mb-0 text-center">
