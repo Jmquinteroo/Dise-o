@@ -8,6 +8,15 @@
 
         </div>
     </div>
+    @if ($message = Session::get('Exito'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @elseif ($message = Session::get('Fracaso'))
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 
 
 
@@ -20,20 +29,25 @@
                         <br class="table">
                         <thead>
                         <tr>
-                            <th>Evento</th>
+                            <th>Id tiquete</th>
+                            <th>Id Evento</th>
                             <th>Fecha Limite</th>
                             <th>Precio</th>
                         </tr>
                         </thead>
+                        <tbody>
                         <div class="col-md-6">
-                            <tbody>
-                            @foreach($tiquetes as $tiquete)
+                            @foreach ($tiquetes as $tiquete)
                                 <tr>
-                                    <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="col-4">
+                                            <td> {{$tiquete->id}}</td>
+                                        </div>
+                                    </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                         <div class="col-4">
-                                            <td> {{$evento[1]}}</td>
+                                            <td> {{$tiquete->evento_id}}</td>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -46,16 +60,21 @@
                                             <td> {{$tiquete->precio}}</td>
                                         </div>
                                     </div>
-
-                                    </br>
-
-
-
                                 </tr>
+                                <form action="{{ route('tiquetes.cancelar',$tiquete->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                                </form>
+                                <form action="{{ route('tiquetes.mostrar_pago',$tiquete->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-info">Pagar</button>
+                                </form>
                             @endforeach
-                            </tbody>
                         </div>
-                        </br>
+
+
+                        </tbody>
+
                     </div>
                 </div>
             </div>
@@ -63,34 +82,5 @@
         @endif
     </div>
 
-    <form method="get" action="{{route('tiquete.pagar')}}">
-        @csrf
-        <div class="form-group row mb-0 text-center">
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Pagar Tiquete') }}
-                </button>
-            </div>
-        </div>
-    </form>
-    <form method="get" action="{{route('lugares.create')}}">
-        @csrf
-        <div class="form-group row mb-0 text-center">
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Agregar lugar') }}
-                </button>
-            </div>
-        </div>
-    </form>
-
-
-
-    </div>
-
-    {{--    <div class="col-md"></div>--}}
-
-    {{--    </div>--}}
-    {{--    </div>--}}
 
 @endsection

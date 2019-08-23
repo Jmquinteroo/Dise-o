@@ -35,7 +35,7 @@
         </div>
     @endif
     <div class="col-md-10">
-        <form action="{{ route('tiquete.pagar') }}" method="POST">
+        <form action="{{ route('tiquete.pagar', [$tiquete]) }}" method="POST">
             @csrf
 
             <div class="row">
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                    <button type="submit" class="btn btn-primary btn-success">Pagar</button>
+                    <button type="submit" class="btn btn-primary btn-success" name="tiquete" value={{$tiquete}}>Pagar</button>
                 </div>
             </div>
 

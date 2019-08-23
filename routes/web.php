@@ -64,12 +64,19 @@ Route::post('lugares/create/sector','sector\Admin_Sector@store') -> name('sector
 Route::view('/welcome','welcome');
 Route::resource('adminregistro','Registro_admin\Admin_registro');
 
-Route::get('eventos/{evento}/{precios}/reservar', 'tiquete\Admin_Tiquetes@reservar')-> name('tiquetes.reservar');
-Route::put('pago', 'tiquete\Admin_Tiquetes@mostrar_pago')-> name('tiquetes.mostrar_pago');
-Route::post('pago', 'tiquete\Admin_Tiquetes@mostrar_pago')-> name('tiquetes.mostrar_pago');
-Route::put('pagar','tiquete\Admin_Tiquetes@pagar') -> name('tiquete.pagar');
-Route::post('pagar','tiquete\Admin_Tiquetes@pagar') -> name('tiquete.pagar');
-Route::resource('tiquetes','tiquete\Admin_Tiquetes');
+Route::get('eventos/{evento}/{precios}/reservar', 'tiquetes\Admin_Tiquetes@reservar')-> name('tiquetes.reservar');
+Route::get('reservar_tiquete/{evento}/{id}', 'tiquetes\Admin_Tiquetes@mostrar_reserva')-> name('tiquetes.mostrar_reserva');
+Route::get('recibo{id}', 'tiquetes\Admin_Tiquetes@mostrar_pago')-> name('tiquetes.mostrar_recibo');
+Route::put('cancelar{id}', 'tiquetes\Admin_Tiquetes@cancelar')-> name('tiquetes.cancelar');
+Route::post('cancelar{id}', 'tiquetes\Admin_Tiquetes@cancelar')-> name('tiquetes.cancelar');
+
+Route::get('pago/{id}', 'tiquetes\Admin_Tiquetes@reservar')-> name('tiquetes.mostrar_pago');
+Route::put('pago/{id}', 'tiquetes\Admin_Tiquetes@mostrar_pago')-> name('tiquetes.mostrar_pago');
+Route::post('pago/{id}', 'tiquetes\Admin_Tiquetes@mostrar_pago')-> name('tiquetes.mostrar_pago');
+Route::get('pagar/{id}', 'tiquetes\Admin_Tiquetes@reservar')-> name('tiquetes.pagar');
+Route::put('pagar/{id}','tiquetes\Admin_Tiquetes@pagar') -> name('tiquete.pagar');
+Route::post('pagar/{id}','tiquetes\Admin_Tiquetes@pagar') -> name('tiquete.pagar');
+Route::resource('tiquetes','tiquetes\Admin_Tiquetes');
 
 
 

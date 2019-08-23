@@ -55,7 +55,7 @@
             <div class="form-group">
                 <strong>Precios:</strong>
                 {{ $evento->precios }}
-                <form action="{{ route('tiquetes.mostrar_pago') }}" method="POST">
+                <form action="{{ route('tiquetes.mostrar_pago',[$tiquete]) }}" method="POST">
                     @csrf
                     @if (auth()->check())
                         <button type="submit" class="btn btn-primary btn-success">Pagar tiquete</button>
