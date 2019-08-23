@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>Registro de Administrador</h1>
+        <h1>Registro</h1>
     </div>
 <div class="container">
     <div class="row justify-content-center">

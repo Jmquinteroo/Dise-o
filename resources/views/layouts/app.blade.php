@@ -136,7 +136,6 @@
                                         <a href="{{ route('lugares.index') }}">Lugares</a>
                                         <a href="{{ route('register') }}">Registrar Admin</a>
                                         <a href="{{ url('/home') }}">Home</a>
-                                        <a href="{{ route('tiquetes.index') }}">Mis tiquetes</a>
 
                                     @else
                                         <a href="{{ route('eventos.index') }}">Eventos</a>

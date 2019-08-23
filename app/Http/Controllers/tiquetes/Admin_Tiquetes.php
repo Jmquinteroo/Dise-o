@@ -125,46 +125,51 @@ class Admin_Tiquetes extends Controller
     public function reservar(Evento $evento,$precios)
     {
         if (Auth::check()) {
-
-            /**
-             * Busca los tiquetes disponibles, para el evento y precio seleccionados.
-             */
-
-            $tiquete = DB::table('tiquetes')
-                ->where('evento_id', $evento->id)
-                ->where('precio', $precios)
-                ->where('estado', 'disponible')
-                ->first();
-
-            /**
-             * Verifica que la búsqueda haya encontrado al menos un tiquete disponible.
-             */
-
-
-            if (isset($tiquete)) {
+            if (auth()->user()->isAdministrator()){
+                return view('/welcome');
+            }
+            else {
 
                 /**
-                 * Guarda el id del tiquete y del usuario para hacer los cambios pertinentes en la base de datos
-                 * Crea la fecha límite de pago
+                 * Busca los tiquetes disponibles, para el evento y precio seleccionados.
                  */
 
-                $id_tiquete = $tiquete->id;
-                $user_id = Auth::id();
-                $fecha = date('Y-m-d', strtotime('+2 days'));
+                $tiquete = DB::table('tiquetes')
+                    ->where('evento_id', $evento->id)
+                    ->where('precio', $precios)
+                    ->where('estado', 'disponible')
+                    ->first();
 
-                DB::table('tiquetes')->where('id', $id_tiquete)
-                    ->update(['estado' => 'reservado',
-                        'user_id' => $user_id,
-                        'fecha_limite' => $fecha]);
+                /**
+                 * Verifica que la búsqueda haya encontrado al menos un tiquete disponible.
+                 */
 
-                return redirect()->route('tiquetes.mostrar_reserva', ['evento' => $evento, 'tiquete' => $id_tiquete])
-                    ->with('Exito', 'Tiquete reservado exitosamente. Tiempo límite de pago: 2 días');
 
-            } else {
+                if (isset($tiquete)) {
 
-                return redirect()->route('eventos.index')
-                    ->with('Error', 'No hay tiquetes disponibles para reservar');
+                    /**
+                     * Guarda el id del tiquete y del usuario para hacer los cambios pertinentes en la base de datos
+                     * Crea la fecha límite de pago
+                     */
 
+                    $id_tiquete = $tiquete->id;
+                    $user_id = Auth::id();
+                    $fecha = date('Y-m-d', strtotime('+2 days'));
+
+                    DB::table('tiquetes')->where('id', $id_tiquete)
+                        ->update(['estado' => 'reservado',
+                            'user_id' => $user_id,
+                            'fecha_limite' => $fecha]);
+
+                    return redirect()->route('tiquetes.mostrar_reserva', ['evento' => $evento, 'tiquete' => $id_tiquete])
+                        ->with('Exito', 'Tiquete reservado exitosamente. Tiempo límite de pago: 2 días');
+
+                } else {
+
+                    return redirect()->route('eventos.index')
+                        ->with('Error', 'No hay tiquetes disponibles para reservar');
+
+                }
             }
         }
     }
@@ -175,35 +180,40 @@ class Admin_Tiquetes extends Controller
             /**
              * Busca los tiquetes disponibles, para el evento y precio seleccionados.
              */
-
-            $tiquete = DB::table('tiquetes')
-                ->where('id', $tiquete_id)
-                ->where('user_id', Auth::id())
-                ->where('estado', 'reservado')
-                ->first();
-
-            /**
-             * Verifica que la búsqueda haya encontrado al menos un tiquete disponible.
-             */
-
-
-            if (isset($tiquete)) {
-
-
-                DB::table('tiquetes')->where('id',$tiquete_id)
-                    ->update(['estado' =>'disponible',
-                        'user_id' => NULL,
-                        'fecha_limite' => NULL]);
-
-                return redirect()->route('tiquetes.index')
-                    ->with('Exito', 'Tiquete cancelado exitosamente.');
-
-            } else {
-
-                return redirect()->route('tiquetes.index')
-                    ->with('Error', 'Este tiquete no se pudo cancelar');
-
+            if (auth()->user()->isAdministrator()){
+                return view('/welcome');
             }
+            else{
+                $tiquete = DB::table('tiquetes')
+                    ->where('id', $tiquete_id)
+                    ->where('user_id', Auth::id())
+                    ->where('estado', 'reservado')
+                    ->first();
+
+                /**
+                 * Verifica que la búsqueda haya encontrado al menos un tiquete disponible.
+                 */
+
+
+                if (isset($tiquete)) {
+
+
+                    DB::table('tiquetes')->where('id',$tiquete_id)
+                        ->update(['estado' =>'disponible',
+                            'user_id' => NULL,
+                            'fecha_limite' => NULL]);
+
+                    return redirect()->route('tiquetes.index')
+                        ->with('Exito', 'Tiquete cancelado exitosamente.');
+
+                } else {
+
+                    return redirect()->route('tiquetes.index')
+                        ->with('Error', 'Este tiquete no se pudo cancelar');
+
+                }
+            }
+
         }
     }
 }

@@ -46,7 +46,9 @@
             <div class="form-group">
                 <strong>Precios:</strong>
                 {{ $evento->precios }}
-                @if (auth()->check())
+                @if (auth()->user()->isAdministrator())
+
+                @else
                     <a href="{{ route('tiquetes.reservar',[$evento,$evento->precios]) }}">Reservar</a>
                 @endif
 

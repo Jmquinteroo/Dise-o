@@ -68,7 +68,7 @@ class Admin_Eventos extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Evento $evento)
-    {if (Auth::user() -> Hasrole('admin')) {
+    {if (Auth::user()) {
         return view('eventos.show',compact('evento'));
     }
     }
