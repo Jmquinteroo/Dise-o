@@ -49,53 +49,24 @@ class Admin_Lugares extends Controller
     public function store(Request $request)
     {
         $input = (object)$request->input();
-
-
        $lugar=Lugar::find( $input->idlugar);
-
         $request->validate([
-
             'nombresector'=>'required|array',
             'nombresector.*'=>'string',
             'capacidadsector'=>'required|array',
             'capacidadsector.*'=>'string',
 
-//            'nombre'=>'required|string|unique:lugares',
-//            'capacidad'=>'required|integer|min:1|max:50|numeric',
-//            'tipo_lugar'=>'required|string|exists:lugares',
-//            'direccion'=>'required|string',
-//            'barrio'=>'required|string',
-//            'sectores'=>'required|integer',
         ]);
 
-//        $lugar = (new Lugar())->fill(($request->input()));
-//        $lugar->save();
-//dd($input->nombresector);
 
         foreach($input->nombresector as $index => $nombre){
             $sector=new Sector();
-            $sector->nombre=$nombre;
+            $sector->nombresector=$nombre;
             $sector->capacidad = $input->capacidadsector[$index];
             $sector->id_lugar=$lugar->id;
             $sector->save();
         }
 
-
-
-
-        //$input = (object)$request;
-//        $lugar = new Lugar();
-//        $lugar->nombre = $input->nombre;
-//        $lugar->capacidad = $input->capacidad;
-//        $lugar->tipo_lugar=$input->tipo_lugar;
-//        $lugar->direccion = $input->direccion;
-//        $lugar->barrio = $input->barrio;
-//        $lugar->sectores = $input->sectores;
-//        $lugar->save();
-//        $lugar = new Lugar();
-
-//        $lugar->name=$request->name;
-//dd($lugar);
         return redirect()->route('lugares.index')
             ->with('Exito','Lugar creado exitosamente');
 
@@ -108,33 +79,13 @@ class Admin_Lugares extends Controller
     {
         $request->validate([
             'nombre'=>'required|string|unique:lugares',
-            //'capacidad'=>'required|integer',
             'tipo_lugar'=>'required|string|exists:lugares',
             'direccion'=>'required|string',
-           // 'barrio'=>'required|string',
-            'sectores'=>'required|integer',
+            'sectores'=>'required|integer|min:0|max:50',
         ]);
 
-
         $lugar = (new Lugar())->fill(($request->input()));
-//        $lugar->nombre = $input->nombre;
-//        $lugar->capacidad = $input->capacidad;
-//        $lugar->tipo_lugar=$input->tipo_lugar;
-//        $lugar->direccion = $input->direccion;
-//        $lugar->barrio = $input->barrio;
-//        $lugar->sectores = $input->sectores;
         $lugar->save();
-
-
-
-//dd($lugar->id);
-
-
-
-
-
-
-
         $sectore = $request->sectores;
         return view('lugares.createsectores',compact('sectore', 'lugar'));
     }
