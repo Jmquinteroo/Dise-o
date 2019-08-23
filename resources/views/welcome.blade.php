@@ -79,6 +79,7 @@
 
                         <a href="{{ url('/home') }}">Home</a>
                         <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('Tiquetes') }}">Consultar tiquete</a>
                     @endif
                  @else
 

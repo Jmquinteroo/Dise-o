@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         return $this->hasRole('admin');
     }
+    public function tiquetes()
+    {
+        return $this->hasMany('App\Models\Tiquete');
+    }
 }

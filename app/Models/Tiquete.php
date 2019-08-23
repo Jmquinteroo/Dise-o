@@ -14,4 +14,13 @@ class Tiquete extends Model
         'estado',
         'user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    public function Evento()
+    {
+        return $this->belongsTo('App\Models\Evento');
+    }
 }

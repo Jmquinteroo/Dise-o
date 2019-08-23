@@ -72,7 +72,7 @@
                     <div class="form-group row mb-0 text-center">
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Agregar lugar') }}
+                            {{ __('Agregaraa lugar') }}
                         </button>
                     </div>
                     </div>

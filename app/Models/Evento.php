@@ -15,4 +15,9 @@ class Evento extends Model
         'hora',
         'precios',
     ];
+
+    public function tiquetes()
+    {
+        return $this->hasMany('App\Model\Tiquete');
+    }
 }

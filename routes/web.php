@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 //Route::middleware('guest')->get('/', function () {
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome    ');
 });
 
 Auth::routes();
@@ -47,6 +47,8 @@ Route::put('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store'
 Route::post('lugares/create','lugar\Admin_Lugares@store') -> name('lugares.store');
 Route::delete('lugares/{id}/destroy','lugar\Admin_Lugares@destroy') -> name('lugares.destroy');
 Route::get('lugares/{id}/destroy','lugar\Admin_Lugares@index') -> name('lugares.destroy');
+Route::get('tiquetes/tiquetes','tiquetes\Admin_Tiquetes@index') -> name('Tiquetes');
+
 
 
 
