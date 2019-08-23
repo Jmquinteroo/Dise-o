@@ -10,3 +10,7 @@
 ## Usuario Admin
 jmqo25@gmail.com
 password:123456789
+
+## Nombre de la base de datos
+Tiqueteria
+(mySQL)
