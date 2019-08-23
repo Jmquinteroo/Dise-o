@@ -7,10 +7,12 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+Se deben migrar las tablas a la base de datos, y ejecutar los seeder. Verificar que las migraciones sean 7: users, passwords, lugares, eventos, permisos, tiquetes, sectores.
+Los seeder son 5: Evento, Lugar, RolesAndPermissions, Tiquete y User.
 ## Usuario Admin
 jmqo25@gmail.com
 password:123456789
 
-## Nombre de la base de datos
-Tiqueteria
-(mySQL)
+## Usuario Cliente
+No hay, se debe registrar
+
